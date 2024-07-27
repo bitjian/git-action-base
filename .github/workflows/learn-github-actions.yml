@@ -1,23 +1,24 @@
 name: react打包发布
 on: push
 
-permissions: 
-  contents: write
 jobs:
   npm-run-build:
     name: npm-build工作
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: 复制仓库内容
       uses: actions/checkout@v4
-    - name: 安装依赖和打包
-      run: |
-        npm install
-        npm run build
-    - name: 部署
-      uses: JamesIves/github-pages-deploy-action@v4
+
+    - name: 登陆docker-hub
+      uses: docker/login-action@v3
       with:
-        branch: gh-pages
-        folder: build
+        username: ${{ secrets.DOCKERNAME }}
+        password: ${{ secrets.DOCKERPASS }}
+    
+    - name: 构建并推送到docker-hub
+      uses: docker/build-push-action@v5
+      with: 
+        push: true
+        tags: zzzzj1183048003/react-action-test@latest
 
