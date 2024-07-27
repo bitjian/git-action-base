@@ -1,12 +1,13 @@
 name: react打包发布
-run-name: react打包
 on: push
+
 permissions: 
   contents: write
 jobs:
   npm-run-build:
     name: npm-build工作
     runs-on: ubuntu-latest
+    
     steps:
     - name: 复制仓库内容
       uses: actions/checkout@v4
