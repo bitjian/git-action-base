@@ -1,9 +1,20 @@
-name: learn-github-actions
-run-name: ${{ github.actor }} is learning GitHub Actions
-on: [push]
+name: react打包发布
+run-name: react打包
+on: push
 jobs:
-  job1:
+  npm-run-build:
+    name: npm-build工作
     runs-on: ubuntu-latest
     steps:
-      - name: 1. 列出文件
-        run: ls -la
+    - name: 复制仓库内容
+      uses: actions/checkout@v4
+    - name: 安装依赖和打包
+      run: |
+        npm install
+        npm run build
+    - name: 部署
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: gh-pages
+        folder: build
+
