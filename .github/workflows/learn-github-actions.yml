@@ -20,5 +20,5 @@ jobs:
       uses: docker/build-push-action@v5
       with: 
         push: true
-        tags: zzzzj1183048003/react-action-test@latest
+        tags:  zzj1183048003/react-action-test:latest
 
