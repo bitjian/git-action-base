@@ -1,4 +1,5 @@
 {
+  "homepage": "https://[username].github.io/git-action-base",
   "name": "react-test",
   "version": "0.1.0",
   "private": true,
